@@ -53,7 +53,7 @@ O DBeaver foi utilizado para fazer uma conexão ao SGBD, enviar os dados do S3 p
     <img src="https://imgur.com/jy5uUQR.png" alt="codigo2">
 </p>
 
-O RDS obedeceu os critérios do seuginte fluxograma de banco de dado:
+O RDS obedeceu os critérios do seguinte fluxograma de banco de dado:
 
 <p align="center">
     <img src="https://imgur.com/rzlln1o.png" alt="codigo2">
@@ -96,7 +96,23 @@ WHERE pos <= 3
     <img src="https://imgur.com/ptUMM5I.png" alt="codigo2">
 </p>
 
-4) Escreva uma query ligando as tabelas Person.Person, Sales.Customer e Sales.SalesOrderHeader de forma a obter uma lista de nomes de clientes e uma contagem de pedidos efetuados.
+3) Escreva uma query ligando as tabelas Person.Person, Sales.Customer e Sales.SalesOrderHeader de forma a obter uma lista de nomes de clientes e uma contagem de pedidos efetuados.
+
+Query:
+SELECT
+	c.CustomerID AS id,
+	CONCAT(p.FirstName, ' ', p.LastName) AS nome, 
+	COUNT(*) AS qtd
+FROM testeRox.SalesOrderHeader soh
+JOIN testeRox.Customer c ON soh.CustomerID = c.CustomerID
+JOIN testeRox.Person p ON c.PersonID = p.BusinessEntityID 
+GROUP BY c.CustomerID, p.FirstName, p.LastName
+ORDER BY qtd DESC;
+
+<p align="center">
+    <img src="https://imgur.com/aUDbbhx.png" alt="codigo2">
+</p>
+
 
 5) Escreva uma query usando as tabelas Sales.SalesOrderHeader, Sales.SalesOrderDetail e Production.Product, de forma a obter a soma total de produtos (OrderQty) por ProductID e OrderDate.
 
