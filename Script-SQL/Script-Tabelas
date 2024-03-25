@@ -1,0 +1,111 @@
+-- Tabelas de Oferta Especial e Produto
+CREATE TABLE IF NOT EXISTS SpecialOfferProduct (
+    SpecialOfferID INT,
+    ProductID INT NOT NULL,
+    rowguid UUID DEFAULT uuid_generate_v4(),
+    ModifiedDate TIMESTAMP,
+    PRIMARY KEY (ProductID)
+);
+
+-- Tabela de Pedidos de Venda
+CREATE TABLE IF NOT EXISTS SalesOrderHeader (
+    SalesOrderID SERIAL PRIMARY KEY,
+    RevisionNumber INT,
+    OrderDate TIMESTAMP,
+    DueDate TIMESTAMP,
+    ShipDate TIMESTAMP,
+    Status INT,
+    OnlineOrderFlag INT,
+    SalesOrderNumber VARCHAR(255),
+    PurchaseOrderNumber VARCHAR(255),
+    AccountNumber VARCHAR(255),
+    CustomerID INT,
+    SalesPersonID INT,
+    TerritoryID INT,
+    BillToAddressID INT,
+    ShipToAddressID INT,
+    ShipMethodID INT,
+    CreditCardID INT,
+    CreditCardApprovalCode VARCHAR(255),
+    CurrencyRateID INT,
+    SubTotal NUMERIC,
+    TaxAmt NUMERIC,
+    Freight NUMERIC,
+    TotalDue NUMERIC,
+    Comment TEXT,
+    rowguid UUID DEFAULT uuid_generate_v4(),
+    ModifiedDate TIMESTAMP
+);
+
+-- Detalhes do Pedido de Venda
+CREATE TABLE IF NOT EXISTS SalesOrderDetail (
+    SalesOrderID INT,
+    SalesOrderDetailID SERIAL PRIMARY KEY,
+    CarrierTrackingNumber VARCHAR(255),
+    OrderQty INT,
+    ProductID INT,
+    SpecialOfferID INT,
+    UnitPrice NUMERIC,
+    UnitPriceDiscount NUMERIC,
+    LineTotal NUMERIC,
+    rowguid UUID DEFAULT uuid_generate_v4(),
+    ModifiedDate TIMESTAMP
+);
+
+-- Tabela de Produto
+CREATE TABLE IF NOT EXISTS Product (
+    ProductID SERIAL PRIMARY KEY,
+    Name VARCHAR(255),
+    ProductNumber VARCHAR(255),
+    MakeFlag INT,
+    FinishedGoodsFlag INT,
+    Color VARCHAR(255),
+    SafetyStockLevel INT,
+    ReorderPoint INT,
+    StandardCost NUMERIC,
+    ListPrice NUMERIC,
+    Size VARCHAR(255),
+    SizeUnitMeasureCode VARCHAR(255),
+    WeightUnitMeasureCode VARCHAR(255),
+    Weight NUMERIC,
+    DaysToManufacture INT,
+    ProductLine VARCHAR(255),
+    Class VARCHAR(255),
+    Style VARCHAR(255),
+    ProductSubcategoryID INT,
+    ProductModelID INT,
+    SellStartDate TIMESTAMP,
+    SellEndDate TIMESTAMP,
+    DiscontinuedDate TIMESTAMP,
+    rowguid UUID DEFAULT uuid_generate_v4(),
+    ModifiedDate TIMESTAMP
+);
+
+-- Tabela de Pessoa
+CREATE TABLE IF NOT EXISTS Person (
+    BusinessEntityID SERIAL PRIMARY KEY,
+    PersonType VARCHAR(255),
+    NameStyle INT,
+    Title VARCHAR(255),
+    FirstName VARCHAR(255),
+    MiddleName VARCHAR(255),
+    LastName VARCHAR(255),
+    Suffix VARCHAR(255),
+    EmailPromotion INT,
+    AdditionalContactInfo TEXT,
+    Demographics TEXT,
+    rowguid UUID DEFAULT uuid_generate_v4(),
+    ModifiedDate TIMESTAMP
+);
+
+-- Tabela de Cliente
+CREATE TABLE IF NOT EXISTS Customer (
+    CustomerID SERIAL PRIMARY KEY,
+    PersonID VARCHAR(255),
+    StoreID DOUBLE PRECISION,
+    TerritoryID INT,
+    AccountNumber VARCHAR(255),
+    rowguid UUID DEFAULT uuid_generate_v4(),
+    ModifiedDate TIMESTAMP
+);
+
