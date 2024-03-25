@@ -41,7 +41,7 @@ Após o processo de ETL, foi criado um banco de dados PostgreSQL no RDS (Amazon 
     <img src="https://imgur.com/DeTOMuE.png" alt="codigo2">
 </p>
 
-O DBeaver foi utilizado para fazer uma conexão ao SGDB, enviar os dados do S3 para o PostgreSQL por meio da extensão aws_s3, criar tabelas e realizar consultas.
+O DBeaver, uma ferramenta universal de gerenciamento de banco de dados, foi utilizado para fazer uma conexão ao SGDB, enviar os dados do S3 para o PostgreSQL por meio da extensão aws_s3, criar tabelas e realizar consultas. A extensão aws_s3 para o PostgreSQL permite acessar dados diretamente do Amazon S3, ampliando as capacidades do PostgreSQL para lidar com dados na nuvem de forma eficiente e escalável. Isso simplifica a transferência de dados entre o S3 e o PostgreSQL, facilitando a gestão integrada do armazenamento e processamento de dados.
 
 <p align="center">
     <img src="https://imgur.com/93NFuJz.png" alt="codigo2">
