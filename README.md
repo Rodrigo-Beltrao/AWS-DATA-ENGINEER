@@ -53,3 +53,33 @@ O DBeaver foi utilizado para fazer uma conexão ao SGBD, enviar os dados do S3 p
     <img src="https://imgur.com/jy5uUQR.png" alt="codigo2">
 </p>
 
+O RDS obedeceu os critérios do seuginte fluxograma de banco de dado:
+
+<p align="center">
+    <img src="https://imgur.com/rzlln1o.png" alt="codigo2">
+</p>
+
+#Consultas no banco de dados
+
+1) Escreva uma query que retorna a quantidade de linhas na tabela Sales.SalesOrderDetail pelo campo SalesOrderID, desde que tenham pelo menos três linhas de detalhes.
+
+Query:
+SELECT 
+	SalesOrderID as id, 
+	COUNT(*) AS qtd 
+FROM testeRox.SalesOrderDetail as sod
+GROUP BY SalesOrderID
+HAVING qtd >= 3
+
+<p align="center">
+    <img src="https://imgur.com/zrmxWpF.png" alt="codigo2">
+</p>
+
+2) Escreva uma query que ligue as tabelas Sales.SalesOrderDetail, Sales.SpecialOfferProduct e Production.Product e retorne os 3 produtos (Name) mais vendidos (pela soma de OrderQty), agrupados pelo número de dias para manufatura (DaysToManufacture).
+
+3) Escreva uma query ligando as tabelas Person.Person, Sales.Customer e Sales.SalesOrderHeader de forma a obter uma lista de nomes de clientes e uma contagem de pedidos efetuados.
+
+4) Escreva uma query usando as tabelas Sales.SalesOrderHeader, Sales.SalesOrderDetail e Production.Product, de forma a obter a soma total de produtos (OrderQty) por ProductID e OrderDate.
+
+5) Escreva uma query mostrando os campos SalesOrderID, OrderDate e TotalDue da tabela Sales.SalesOrderHeader. Obtenha apenas as linhas onde a ordem tenha sido feita durante o mês de setembro/2011 e o total devido esteja acima de 1.000. Ordene pelo total devido decrescente.
+
