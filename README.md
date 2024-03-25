@@ -4,7 +4,6 @@ O presente projeto tem por finalidade desenvolver uma infraestrutura na AWS para
 
 - AWS S3 para armazenamento de dados;
 - AWS Glue para análise e tratamento de dados com o Spark;
-- AWS Lambda para carregar os dados tratados para o banco de dados;
 - AWS RDS para criação de um banco relacional postgresql;
 - DBeaver para manipular o SGBD e enviar arquivos do S3 para o Postgre por meio da extensão aws_s3.
 
