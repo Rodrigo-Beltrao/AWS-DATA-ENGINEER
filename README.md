@@ -6,7 +6,7 @@ O presente projeto tem por finalidade desenvolver uma infraestrutura na AWS para
 - AWS Glue para análise e tratamento de dados com o Spark;
 - AWS Lambda para carregar os dados tratados para o banco de dados;
 - AWS RDS para criação de um banco relacional postgresql;
-- DBeaver para manipular o SGBD.
+- DBeaver para manipular o SGBD e enviar arquivos do S3 para o Postgre por meio da extensão aws_s3.
 
 ## ETL
 
@@ -114,7 +114,24 @@ ORDER BY qtd DESC;
 </p>
 
 
-5) Escreva uma query usando as tabelas Sales.SalesOrderHeader, Sales.SalesOrderDetail e Production.Product, de forma a obter a soma total de produtos (OrderQty) por ProductID e OrderDate.
+4) Escreva uma query usando as tabelas Sales.SalesOrderHeader, Sales.SalesOrderDetail e Production.Product, de forma a obter a soma total de produtos (OrderQty) por ProductID e OrderDate.
 
-6) Escreva uma query mostrando os campos SalesOrderID, OrderDate e TotalDue da tabela Sales.SalesOrderHeader. Obtenha apenas as linhas onde a ordem tenha sido feita durante o mês de setembro/2011 e o total devido esteja acima de 1.000. Ordene pelo total devido decrescente.
+Query:
+SELECT
+    sod.ProductID AS id,
+    p.Name AS nome,
+    SUM(sod.OrderQty) AS qtd,
+    CAST(soh.OrderDate AS DATE) AS data_pedido
+FROM testeRox.SalesOrderDetail sod
+JOIN testeRox.SalesOrderHeader soh ON sod.SalesOrderID = soh.SalesOrderID
+JOIN testeRox.Product p ON sod.ProductID = p.ProductID
+GROUP BY id, nome, data_pedido
+ORDER BY data_pedido, qtd DESC;
+
+<p align="center">
+    <img src="https://imgur.com/U1sEXsA.png" alt="codigo2">
+</p>
+
+
+5) Escreva uma query mostrando os campos SalesOrderID, OrderDate e TotalDue da tabela Sales.SalesOrderHeader. Obtenha apenas as linhas onde a ordem tenha sido feita durante o mês de setembro/2011 e o total devido esteja acima de 1.000. Ordene pelo total devido decrescente.
 
