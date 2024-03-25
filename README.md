@@ -52,13 +52,13 @@ O DBeaver foi utilizado para fazer uma conexão ao SGBD, enviar os dados do S3 p
     <img src="https://imgur.com/jy5uUQR.png" alt="codigo2">
 </p>
 
-O RDS obedeceu os critérios do seguinte fluxograma de banco de dado:
+O RDS obedeceu os critérios do seguinte fluxograma de banco de dados:
 
 <p align="center">
     <img src="https://imgur.com/rzlln1o.png" alt="codigo2">
 </p>
 
-#Consultas no banco de dados
+## Consultas no banco de dados
 
 1) Escreva uma query que retorna a quantidade de linhas na tabela Sales.SalesOrderDetail pelo campo SalesOrderID, desde que tenham pelo menos três linhas de detalhes.
 
@@ -133,4 +133,18 @@ ORDER BY data_pedido, qtd DESC;
 
 
 5) Escreva uma query mostrando os campos SalesOrderID, OrderDate e TotalDue da tabela Sales.SalesOrderHeader. Obtenha apenas as linhas onde a ordem tenha sido feita durante o mês de setembro/2011 e o total devido esteja acima de 1.000. Ordene pelo total devido decrescente.
+
+Query:
+SELECT 
+	SalesOrderID as id,
+	CAST(OrderDate AS DATE) AS data, 
+	TotalDue AS total_devido
+FROM testeRox.SalesOrderHeader
+WHERE OrderDate BETWEEN '2011-09-01' AND '2011-09-30' AND TotalDue > 1000
+ORDER BY total_devido;
+
+<p align="center">
+    <img src="https://imgur.com/OUGchY8.png" alt="codigo2">
+</p>
+
 
