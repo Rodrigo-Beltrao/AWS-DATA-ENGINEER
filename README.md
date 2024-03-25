@@ -9,7 +9,7 @@ O presente projeto tem por finalidade desenvolver uma infraestrutura na AWS para
 
 ## ETL
 
-Os arquivos do projeto foram alocados no S3 devido à enorme compatibilidade deste serviço com as demais ferramentas da AWS.
+O Amazon S3 (Simple Storage Service) foi escolhido para armazenar os arquivos do projeto devido à sua ampla compatibilidade com os serviços da AWS, integração suave e eficiente com o ecossistema da plataforma. A localização na região Norte da Virgínia foi selecionada devido ao baixo custo dos serviços em comparação com outras regiões. O S3 oferece confiabilidade, durabilidade e escalabilidade, garantindo alta disponibilidade dos dados, proteção contra falhas e facilidade de expansão conforme as necessidades do projeto crescem. Todos os scripts do projeto estão disponíveis no topo desta página para fácil acesso e utilização.
 
 <p align="center">
     <img src="https://imgur.com/jqXSuk7.png" alt="codigo2">
